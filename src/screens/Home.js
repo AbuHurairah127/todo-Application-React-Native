@@ -35,14 +35,14 @@ const Home = () => {
   ];
   const [todos, setTodos] = useState(fakeTodos);
 
-  // const deleteAllHandler = () => {
-  //   setTodos([]);
-  // };
+  const deleteAllHandler = () => {
+    setTodos([]);
+  };
   console.log('App Running');
   return (
     <View style={style.container}>
       <View style={style.headerContainer}>
-        <Header />
+        <Header deleteAll={deleteAllHandler} />
       </View>
       <View style={style.todoListContainer}>
         <TodoList todos={todos} setTodos={setTodos} />
