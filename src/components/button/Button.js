@@ -10,13 +10,12 @@ const Button = props => {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        width: '100%',
       }}>
       <View>
         <TouchableHighlight
           style={{
-            width: '25%',
             textAlign: 'center',
+            minWidth: '50%',
             backgroundColor: '#ffb703',
             padding: 8,
             borderRadius: 5,
@@ -25,7 +24,7 @@ const Button = props => {
           onPress={event}
           activeOpacity={0.6}
           underlayColor="#DDDDDD">
-          <Text>{label}</Text>
+          <Text style={{textAlign: 'center'}}>{label}</Text>
         </TouchableHighlight>
       </View>
     </View>

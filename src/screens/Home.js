@@ -1,48 +1,51 @@
 import React, {useState} from 'react';
-import {ScrollView, View} from 'react-native';
+import {style} from './HomeStyle';
+import {
+  KeyboardAvoidingView,
+  SafeAreaView,
+  ScrollView,
+  View,
+} from 'react-native';
 import Header from '../components/header/Header';
-import Footer from '../components/footer/Footer';
-import Button from '../components/button/Button';
-import AddTodo from '../components/addTodo/AddTodo';
+
 import TodoList from '../components/todoList/TodoList';
 
 const Home = () => {
-  const [isNavbarAppear, setIsNavbarAppear] = useState(false);
-  const [isTodoButton, setIsTodoButton] = useState(true);
-  const navbarToggler = () => {
-    setIsNavbarAppear(!isNavbarAppear);
-  };
+  const fakeTodos = [
+    {
+      title: 'Buy a Bike',
+      key: '1',
+    },
+    {
+      title: 'Buy a Car',
+      key: '2',
+    },
+    {
+      title: 'Buy a House',
+      key: '3',
+    },
+    {
+      title: 'Buy a Banglow',
+      key: '4',
+    },
+    {
+      title: 'Buy a Farm House',
+      key: '5',
+    },
+  ];
+  const [todos, setTodos] = useState(fakeTodos);
 
-  const todoModalLauncher = () => {
-    setIsTodoButton(!isTodoButton);
-  };
+  // const deleteAllHandler = () => {
+  //   setTodos([]);
+  // };
+  console.log('App Running');
   return (
-    <View
-      style={{
-        display: 'flex',
-        minHeight: '100%',
-      }}>
-      <Header />
-      <View
-        style={{
-          marginTop: 25,
-        }}>
-        {isTodoButton ? (
-          <AddTodo todoModalLauncher={todoModalLauncher} />
-        ) : (
-          <Button event={todoModalLauncher} label="Add Todo" />
-        )}
+    <View style={style.container}>
+      <View style={style.headerContainer}>
+        <Header />
       </View>
-      <View>
-        <ScrollView>
-          <TodoList />
-        </ScrollView>
-      </View>
-      <View
-        style={{
-          marginTop: 'auto',
-        }}>
-        <Footer />
+      <View style={style.todoListContainer}>
+        <TodoList todos={todos} setTodos={setTodos} />
       </View>
     </View>
   );
