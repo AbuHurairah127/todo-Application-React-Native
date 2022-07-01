@@ -1,32 +1,13 @@
 import React from 'react';
-import {View, Text, TouchableHighlight} from 'react-native';
+import {TouchableOpacity, View} from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import {style} from './ButtonStyle';
 
 const Button = props => {
-  const {label, event} = props;
+  const {iconName, iconColor} = props;
   return (
-    <View
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}>
-      <View>
-        <TouchableHighlight
-          style={{
-            textAlign: 'center',
-            minWidth: '50%',
-            backgroundColor: '#ffb703',
-            padding: 8,
-            borderRadius: 5,
-            color: '#023047',
-          }}
-          onPress={event}
-          activeOpacity={0.6}
-          underlayColor="#DDDDDD">
-          <Text style={{textAlign: 'center'}}>{label}</Text>
-        </TouchableHighlight>
-      </View>
+    <View style={style.container}>
+      <Icon name={iconName} color={iconColor} size={50} />
     </View>
   );
 };

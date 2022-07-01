@@ -15,7 +15,7 @@ const TodoList = props => {
         justifyContent: 'center',
       }}>
       {props.todos.length === 0 ? (
-        <Text style={{color: 'white', fontSize: 20, textAlign: 'center'}}>
+        <Text style={{color: '#faf0ca', fontSize: 20, textAlign: 'center'}}>
           'You have no TODOS to see'
         </Text>
       ) : (
@@ -24,7 +24,7 @@ const TodoList = props => {
           renderItem={item => (
             <View
               style={{
-                backgroundColor: '#adb5bd',
+                backgroundColor: '#faf0ca',
                 marginTop: 3,
                 display: 'flex',
                 flexDirection: 'row',
@@ -38,7 +38,7 @@ const TodoList = props => {
               <Text
                 style={{
                   fontSize: 16,
-                  color: '#212529',
+                  color: '#0d3b66',
                 }}>
                 {item.item.title}
               </Text>

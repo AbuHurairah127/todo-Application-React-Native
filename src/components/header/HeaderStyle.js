@@ -9,7 +9,7 @@ export const style = StyleSheet.create({
   },
   headerTextContainer: {width: '50%'},
   headerText: {
-    color: '#edf2f4',
+    color: '#faf0ca',
     fontSize: 35,
     fontStyle: 'italic',
     fontWeight: '900',
