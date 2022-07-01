@@ -11,32 +11,38 @@ const Home = () => {
   const fakeTodos = [
     {
       title: 'Buy a Bike',
-      key: '1',
+      key: '0',
     },
     {
       title: 'Buy a Car',
-      key: '2',
+      key: '1',
     },
     {
       title: 'Buy a House',
-      key: '3',
+      key: '2',
     },
     {
       title: 'Buy a Banglow',
-      key: '4',
+      key: '3',
     },
     {
       title: 'Buy a Farm House',
-      key: '5',
+      key: '4',
     },
   ];
+  const [todoInput, setTodoInput] = useState('');
   const [todos, setTodos] = useState(fakeTodos);
   const [modalAppear, setModalAppear] = useState(false);
+  const onSubmitHandler = todo => {
+    const newTodos = [...todos, todo];
+    console.log(todo);
+    setTodos(newTodos);
+    setModalAppear(false);
+  };
 
   const deleteAllHandler = () => {
     setTodos([]);
   };
-  console.log('App Running');
   return (
     <View style={style.container}>
       {!modalAppear ? (
@@ -63,6 +69,10 @@ const Home = () => {
           <InputModal
             modalAppear={modalAppear}
             setModalAppear={setModalAppear}
+            todoInput={todoInput}
+            setTodoInput={setTodoInput}
+            onSubmitHandler={onSubmitHandler}
+            todos={todos}
           />
         </View>
       )}

@@ -25,8 +25,9 @@ export const styles = StyleSheet.create({
     display: 'flex',
     width: '100%',
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'center',
+    marginVertical: 5,
   },
 
   modalHeaderText: {
@@ -39,6 +40,7 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
   },
   inputField: {
+    fontSize: 18,
     width: '100%',
     borderRadius: 20,
     borderColor: '#0d3b66',
@@ -50,7 +52,7 @@ export const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'flex-end',
-    justifyContent: 'flex-end',
+    justifyContent: 'space-around',
     width: '100%',
   },
 });
