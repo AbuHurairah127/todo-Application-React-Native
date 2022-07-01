@@ -3,9 +3,10 @@ import {View, Text, TouchableOpacity} from 'react-native';
 import {SwipeListView} from 'react-native-swipe-list-view';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 const TodoList = props => {
+  const {todos, setTodos, onUpdateHandler} = props;
   const deleteHandler = key => {
-    let newTodos = props.todos.filter(todo => todo.key !== key);
-    props.setTodos(newTodos);
+    let newTodos = todos.filter(todo => todo.key !== key);
+    setTodos(newTodos);
   };
 
   return (
@@ -14,13 +15,13 @@ const TodoList = props => {
         display: 'flex',
         justifyContent: 'center',
       }}>
-      {props.todos.length === 0 ? (
+      {todos.length === 0 ? (
         <Text style={{color: '#faf0ca', fontSize: 20, textAlign: 'center'}}>
           'You have no TODOS to see'
         </Text>
       ) : (
         <SwipeListView
-          data={props.todos}
+          data={todos}
           renderItem={item => (
             <View
               style={{
@@ -61,7 +62,7 @@ const TodoList = props => {
                   borderRadius: 50,
                   marginHorizontal: 3,
                 }}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => onUpdateHandler(data.item)}>
                   <Icon name="edit" size={30} color="#edf2f4" />
                 </TouchableOpacity>
               </View>

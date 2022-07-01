@@ -11,12 +11,22 @@ const App = props => {
     setTodoInput,
     onSubmitHandler,
     todos,
+    updateTodo,
+    setUpdateTodo,
+    onCTAUpdate,
   } = props;
   const handleSubmit = () => {
-    onSubmitHandler({
-      title: todoInput,
-      key: `${[todos.length]}`,
-    });
+    if (!updateTodo) {
+      onSubmitHandler({
+        title: todoInput,
+        key: `${[todos.length]}`,
+      });
+    } else {
+      onCTAUpdate({
+        title: todoInput,
+        key: updateTodo.key,
+      });
+    }
     setTodoInput('');
   };
 
@@ -49,6 +59,7 @@ const App = props => {
                 onPress={() => {
                   setModalAppear(false);
                   setTodoInput('');
+                  setUpdateTodo(null);
                 }}>
                 <Button iconName="close" iconColor="#0d3b66" />
               </Pressable>
