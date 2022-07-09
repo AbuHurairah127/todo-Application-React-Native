@@ -1,34 +1,13 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Modal, Text, Pressable, View, TextInput} from 'react-native';
 import Button from '../button/Button';
 import {styles} from './InputModalStyle';
+import useInputModal from './useInputModal';
 
 const App = props => {
-  const {
-    modalAppear,
-    setModalAppear,
-    todoInput,
-    setTodoInput,
-    onSubmitHandler,
-    todos,
-    updateTodo,
-    setUpdateTodo,
-    onCTAUpdate,
-  } = props;
-  const handleSubmit = () => {
-    if (!updateTodo) {
-      onSubmitHandler({
-        title: todoInput,
-        key: `${[todos.length]}`,
-      });
-    } else {
-      onCTAUpdate({
-        title: todoInput,
-        key: updateTodo.key,
-      });
-    }
-    setTodoInput('');
-  };
+  const {modalAppear, setModalAppear} = props;
+  const {onSubmitHandler, setUpdateTodo, updateTodo, setTodoInput, todoInput} =
+    useInputModal();
 
   return (
     <View style={styles.centeredView}>
@@ -63,7 +42,12 @@ const App = props => {
                 }}>
                 <Button iconName="close" iconColor="#0d3b66" />
               </Pressable>
-              <Pressable style={styles.buttonClose} onPress={handleSubmit}>
+              <Pressable
+                style={styles.buttonClose}
+                onPress={() => {
+                  onSubmitHandler();
+                  setModalAppear(false);
+                }}>
                 <Button iconName="check" iconColor="#0d3b66" />
               </Pressable>
             </View>

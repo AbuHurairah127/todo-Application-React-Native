@@ -10,14 +10,16 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "i": "^0.3.7",
+    "npm": "^8.13.2",
     "react": "17.0.2",
     "react-native": "0.68.2",
     "react-native-swipe-list-view": "^3.2.9",
+    "react-native-uuid": "^2.0.1",
     "react-native-vector-icons": "^9.2.0",
     "react-redux": "^8.0.2",
     "redux": "^4.2.0",
-    "redux-thunk": "^2.4.1",
-    "uuid": "^8.3.2"
+    "redux-thunk": "^2.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

@@ -3,11 +3,7 @@ import {View, Text, TouchableOpacity} from 'react-native';
 import {SwipeListView} from 'react-native-swipe-list-view';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 const TodoList = props => {
-  const {todos, setTodos, onUpdateHandler} = props;
-  const deleteHandler = key => {
-    let newTodos = todos.filter(todo => todo.key !== key);
-    setTodos(newTodos);
-  };
+  const {todos, onUpdateHandler} = props;
 
   return (
     <View

@@ -8,45 +8,19 @@ import Button from '../../components/button/Button';
 import {useSelector} from 'react-redux';
 
 const Home = () => {
-  const fakeTodos = useSelector(store => store.todoReducer);
-  const [todoInput, setTodoInput] = useState('');
-  const [updateTodo, setUpdateTodo] = useState(null);
-  const [todos, setTodos] = useState(fakeTodos);
+  const todos = useSelector(store => store.todoReducer.todos);
+
   const [modalAppear, setModalAppear] = useState(false);
-  const onSubmitHandler = todo => {
-    const newTodos = [...todos, todo];
-    setTodos(newTodos);
-    setModalAppear(false);
-  };
-  const onUpdateHandler = todo => {
-    setUpdateTodo(todo);
-    setModalAppear(true);
-    setTodoInput(todo.title);
-  };
-  const onCTAUpdate = editedTodo => {
-    const newTodos = [...todos];
-    const todoIndex = todos.findIndex(todo => todo.key === editedTodo.key);
-    newTodos.splice(todoIndex, 1, editedTodo);
-    setTodos(newTodos);
-    setModalAppear(false);
-    setUpdateTodo(null);
-  };
-  const deleteAllHandler = () => {
-    setTodos([]);
-  };
+
   return (
     <View style={style.container}>
       {!modalAppear ? (
         <View style={style.container}>
           <View style={style.headerContainer}>
-            <Header deleteAll={deleteAllHandler} />
+            <Header />
           </View>
           <View style={style.todoListContainer}>
-            <TodoList
-              todos={todos}
-              setTodos={setTodos}
-              onUpdateHandler={onUpdateHandler}
-            />
+            <TodoList todos={todos} />
           </View>
           <View>
             <TouchableOpacity onPress={() => setModalAppear(!modalAppear)}>
@@ -64,13 +38,7 @@ const Home = () => {
           <InputModal
             modalAppear={modalAppear}
             setModalAppear={setModalAppear}
-            todoInput={todoInput}
-            setTodoInput={setTodoInput}
-            onSubmitHandler={onSubmitHandler}
             todos={todos}
-            updateTodo={updateTodo}
-            setUpdateTodo={setUpdateTodo}
-            onCTAUpdate={onCTAUpdate}
           />
         </View>
       )}

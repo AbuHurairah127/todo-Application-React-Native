@@ -1,28 +1,19 @@
-let initialState = [
-  {
-    title: 'Buy a Bike',
-    key: '0',
-  },
-  {
-    title: 'Buy a Car',
-    key: '1',
-  },
-  {
-    title: 'Buy a House',
-    key: '2',
-  },
-  {
-    title: 'Buy a Banglow',
-    key: '3',
-  },
-  {
-    title: 'Buy a Farm House',
-    key: '4',
-  },
-];
+import {ADD_TODO} from '../types/constants';
+
+let initialState = {
+  todos: [],
+};
 
 const todoReducer = (state = initialState, action) => {
   switch (action.type) {
+    case ADD_TODO: {
+      let newTodos = [...state.todos, action.payload];
+      return {
+        ...state,
+        todos: newTodos,
+      };
+    }
+
     default:
       return state;
   }
