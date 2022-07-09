@@ -1,15 +1,19 @@
 import React from 'react';
-import {Text, View} from 'react-native';
-import Home from './src/screens/Home';
+import {View} from 'react-native';
+import Home from './src/screens/home/Home';
+import {Provider} from 'react-redux';
+import store from './src/config/store';
 
 const App = () => {
   return (
-    <View
-      style={{
-        flex: 1,
-      }}>
-      <Home />
-    </View>
+    <Provider store={store}>
+      <View
+        style={{
+          flex: 1,
+        }}>
+        <Home />
+      </View>
+    </Provider>
   );
 };
 

@@ -1,34 +1,14 @@
 import React, {useState} from 'react';
 import {style} from './HomeStyle';
-import {Alert, TouchableOpacity, View} from 'react-native';
-import Header from '../components/header/Header';
-import TodoList from '../components/todoList/TodoList';
-import InputModal from '../components/inputModal/InputModal';
-import Button from '../components/button/Button';
+import {TouchableOpacity, View} from 'react-native';
+import Header from '../../components/header/Header';
+import TodoList from '../../components/todoList/TodoList';
+import InputModal from '../../components/inputModal/InputModal';
+import Button from '../../components/button/Button';
+import {useSelector} from 'react-redux';
 
 const Home = () => {
-  const fakeTodos = [
-    {
-      title: 'Buy a Bike',
-      key: '0',
-    },
-    {
-      title: 'Buy a Car',
-      key: '1',
-    },
-    {
-      title: 'Buy a House',
-      key: '2',
-    },
-    {
-      title: 'Buy a Banglow',
-      key: '3',
-    },
-    {
-      title: 'Buy a Farm House',
-      key: '4',
-    },
-  ];
+  const fakeTodos = useSelector(store => store.todoReducer);
   const [todoInput, setTodoInput] = useState('');
   const [updateTodo, setUpdateTodo] = useState(null);
   const [todos, setTodos] = useState(fakeTodos);
