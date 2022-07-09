@@ -4,7 +4,6 @@ import {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {addTodo} from './../../store/actions/todoAction';
 const useInputModal = () => {
-  const [todoInput, setTodoInput] = useState('');
   const [updateTodo, setUpdateTodo] = useState(null);
   const dispatch = useDispatch();
   const onSubmitHandler = () => {
@@ -16,7 +15,6 @@ const useInputModal = () => {
       Alert.alert('Please! Fill the input field properly.');
     } else {
       dispatch(addTodo(todo));
-      setTodoInput('');
     }
   };
   return {onSubmitHandler, setUpdateTodo, updateTodo, setTodoInput, todoInput};

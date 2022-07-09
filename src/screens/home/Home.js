@@ -5,12 +5,10 @@ import Header from '../../components/header/Header';
 import TodoList from '../../components/todoList/TodoList';
 import InputModal from '../../components/inputModal/InputModal';
 import Button from '../../components/button/Button';
-import {useSelector} from 'react-redux';
 
 const Home = () => {
-  const todos = useSelector(store => store.todoReducer.todos);
-
   const [modalAppear, setModalAppear] = useState(false);
+  const [todoInput, setTodoInput] = useState('');
 
   return (
     <View style={style.container}>
@@ -20,7 +18,10 @@ const Home = () => {
             <Header />
           </View>
           <View style={style.todoListContainer}>
-            <TodoList todos={todos} />
+            <TodoList
+              setModalAppear={setModalAppear}
+              setTodoInput={setTodoInput}
+            />
           </View>
           <View>
             <TouchableOpacity onPress={() => setModalAppear(!modalAppear)}>
@@ -36,9 +37,10 @@ const Home = () => {
       ) : (
         <View style={style.todoModalContainer}>
           <InputModal
+            todoInput={todoInput}
+            setTodoInput={setTodoInput}
             modalAppear={modalAppear}
             setModalAppear={setModalAppear}
-            todos={todos}
           />
         </View>
       )}

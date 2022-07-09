@@ -2,8 +2,11 @@ import React, {useState} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import {SwipeListView} from 'react-native-swipe-list-view';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import useTodoList from './useTodoList';
+
 const TodoList = props => {
-  const {todos, onUpdateHandler} = props;
+  const {setModalAppear, setTodoInput} = props;
+  const {todos, onDeleteHandler, onUpdateHandler} = useTodoList();
 
   return (
     <View
@@ -58,7 +61,11 @@ const TodoList = props => {
                   borderRadius: 50,
                   marginHorizontal: 3,
                 }}>
-                <TouchableOpacity onPress={() => onUpdateHandler(data.item)}>
+                <TouchableOpacity
+                  onPress={() => {
+                    setModalAppear(true);
+                    setTodoInput(data.item.title);
+                  }}>
                   <Icon name="edit" size={30} color="#edf2f4" />
                 </TouchableOpacity>
               </View>
@@ -69,7 +76,8 @@ const TodoList = props => {
                   borderRadius: 50,
                   marginHorizontal: 3,
                 }}>
-                <TouchableOpacity onPress={() => deleteHandler(data.item.key)}>
+                <TouchableOpacity
+                  onPress={() => onDeleteHandler(data.item.key)}>
                   <Icon name="delete" size={30} color="#d90429" />
                 </TouchableOpacity>
               </View>

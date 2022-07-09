@@ -4,10 +4,9 @@ import Button from '../button/Button';
 import {styles} from './InputModalStyle';
 import useInputModal from './useInputModal';
 
-const App = props => {
-  const {modalAppear, setModalAppear} = props;
-  const {onSubmitHandler, setUpdateTodo, updateTodo, setTodoInput, todoInput} =
-    useInputModal();
+const InputModal = props => {
+  const {modalAppear, setModalAppear, setTodoInput, todoInput} = props;
+  const {onSubmitHandler, setUpdateTodo, updateTodo} = useInputModal();
 
   return (
     <View style={styles.centeredView}>
@@ -45,8 +44,10 @@ const App = props => {
               <Pressable
                 style={styles.buttonClose}
                 onPress={() => {
+                  setTodoInput(todoInput);
                   onSubmitHandler();
                   setModalAppear(false);
+                  setTodoInput('');
                 }}>
                 <Button iconName="check" iconColor="#0d3b66" />
               </Pressable>
@@ -58,4 +59,4 @@ const App = props => {
   );
 };
 
-export default App;
+export default InputModal;
