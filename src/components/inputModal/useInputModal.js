@@ -1,23 +1,29 @@
 import {Alert} from 'react-native';
 import uuid from 'react-native-uuid';
-import {useState} from 'react';
 import {useDispatch} from 'react-redux';
-import {addTodo} from './../../store/actions/todoAction';
+import {addTodo, updateTodo} from './../../store/actions/todoAction';
 const useInputModal = () => {
-  const [updateTodo, setUpdateTodo] = useState(null);
   const dispatch = useDispatch();
-  const onSubmitHandler = () => {
-    let todo = {
-      title: todoInput,
-      key: uuid.v4(),
-    };
-    if (!todoInput) {
-      Alert.alert('Please! Fill the input field properly.');
+  const onSubmitHandler = (todoInput, isUpdate, setIsUpdate, updateKey) => {
+    if (isUpdate) {
+      let todo = {
+        title: todoInput,
+        key: updateKey,
+      };
+      dispatch(updateTodo(todo));
+      setIsUpdate(false);
     } else {
+      let todo = {
+        title: todoInput,
+        key: uuid.v4(),
+      };
       dispatch(addTodo(todo));
     }
+    if (!todoInput) {
+      Alert.alert('Please! Fill the input field properly.');
+    }
   };
-  return {onSubmitHandler, setUpdateTodo, updateTodo, setTodoInput, todoInput};
+  return {onSubmitHandler};
 };
 
 export default useInputModal;

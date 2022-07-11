@@ -9,6 +9,8 @@ import Button from '../../components/button/Button';
 const Home = () => {
   const [modalAppear, setModalAppear] = useState(false);
   const [todoInput, setTodoInput] = useState('');
+  const [isUpdate, setIsUpdate] = useState(false);
+  const [updateKey, setUpdateKey] = useState({});
 
   return (
     <View style={style.container}>
@@ -21,6 +23,8 @@ const Home = () => {
             <TodoList
               setModalAppear={setModalAppear}
               setTodoInput={setTodoInput}
+              setIsUpdate={setIsUpdate}
+              setUpdateKey={setUpdateKey}
             />
           </View>
           <View>
@@ -39,8 +43,11 @@ const Home = () => {
           <InputModal
             todoInput={todoInput}
             setTodoInput={setTodoInput}
+            isUpdate={isUpdate}
+            setIsUpdate={setIsUpdate}
             modalAppear={modalAppear}
             setModalAppear={setModalAppear}
+            updateKey={updateKey}
           />
         </View>
       )}

@@ -5,8 +5,8 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import useTodoList from './useTodoList';
 
 const TodoList = props => {
-  const {setModalAppear, setTodoInput} = props;
-  const {todos, onDeleteHandler, onUpdateHandler} = useTodoList();
+  const {setModalAppear, setTodoInput, setIsUpdate, setUpdateKey} = props;
+  const {todos, onDeleteHandler} = useTodoList();
 
   return (
     <View
@@ -64,7 +64,9 @@ const TodoList = props => {
                 <TouchableOpacity
                   onPress={() => {
                     setModalAppear(true);
+                    setIsUpdate(true);
                     setTodoInput(data.item.title);
+                    setUpdateKey(data.item.key);
                   }}>
                   <Icon name="edit" size={30} color="#edf2f4" />
                 </TouchableOpacity>

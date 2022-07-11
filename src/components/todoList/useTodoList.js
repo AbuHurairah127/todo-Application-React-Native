@@ -6,11 +6,9 @@ const useTodoList = () => {
   const onDeleteHandler = uid => {
     dispatch(deleteTodo(uid));
   };
-  const onUpdateHandler = data => {};
   return {
     todos,
     onDeleteHandler,
-    onUpdateHandler,
   };
 };
 
